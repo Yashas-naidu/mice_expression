@@ -19,67 +19,6 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="static/css/styles.css" rel="stylesheet" />
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Open Sans', sans-serif;
-        }
-
-        .masthead {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), url('https://i.gifer.com/LMjK.gif');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .masthead1 {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), url('https://th.bing.com/th/id/R.5a662e8b0dd85d64c1b6ac64e881441a?rik=gwCKSexDh%2ffwNA&riu=http%3a%2f%2f37.media.tumblr.com%2fac5e6f394bfcf35f9730547d785a0bdd%2ftumblr_n5ure2mw4v1qzt7d8o1_500.gif&ehk=teWsHYVJAxp50ltgHwIBn5JS0O%2fFKG2u44XjcH%2b%2brSY%3d&risl=&pid=ImgRaw&r=0');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            display: flex;
-        }
-
-
-
-        .site-heading h1 {
-            font-size: 3.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .site-heading .subheading {
-            font-size: 1.5rem;
-            font-weight: 300;
-            margin-top: 0;
-        }
-
-        .page-content {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        .form-v9-content {
-            background: rgba(255, 255, 255, 0.414);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgb(0, 0, 0);
-            width: 80%;
-            max-width: 800px;
-            margin: 20px;
-        }
-
         .protein-inputs {
             display: flex;
             flex-direction: column;
@@ -100,6 +39,13 @@
 
         .form-row input {
             width: 150px;
+        }
+
+        .form-v9-content {
+            background-image: url('static/assets/img/form-v9.jpg');
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .register,
@@ -156,7 +102,7 @@
 
 <body>
     <!-- Page Header-->
-    <header class="masthead">
+    <header class="masthead" style="background-image: url('static/assets/img/wine.jpg')">
         <div class="container position-relative px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
@@ -169,61 +115,14 @@
             </div>
         </div>
     </header>
-    <header class="masthead1">
-        <div class="container position-relative px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-md-10 col-lg-8 col-xl-7">
-                    <div class="site-heading">
-                        <br>
-                        <h1>
-                            <blockquote> <i><u>Guidelines for the input</u></i></blockquote>
-                        </h1>
-                        <br>
-                        <span class="subheading"><i>
-                                <ol>
-                                    <li>All inputs must be numeric none of the categorical values are allowed since it
-                                        is a classification problem and all fields are compulsory</li>
-                                    <li>Please enter the genotype expression ratio obtained through the clinical
-                                        experiment and carefully update all the values</li>
-                                    <li>If autofill is used it would take some random assumed value which is only
-                                        created for testing purpose advised not to consider those predictions which may
-                                        not be right</li>
-                                    <li>Genotype (Control-1,Ts65Dn-0), Treatment (Saline-0,Memantine-1) and Behavior
-                                        (S/C-1,C/S-0) are categorical values hence 0 or 1 is used because it is one-hot
-                                        encoded</li>
-                                    <li>Similarly the predicted output would be ranging from 0 to 7 which would the
-                                        classes as follows:
-
-                                        c-CS-m (0)
-                                        c-SC-m (1)
-                                        c-CS-s (2)
-                                        c-SC-s (3)
-                                        t-CS-m (4)
-                                        t-SC-m (5)
-                                        t-CS-s (6)
-                                        t-SC-s (7)
-
-                                    </li>
-                                    <li>
-                                        Move to endpoint <a href="/train">train</a> to train the model before using it
-                                    </li>
-                                    <li>Check for the dataset from their official website for more details <a href="https://archive.ics.uci.edu/ml/datasets/Mice+Protein+Expression">Uc Irvine</a></li>
-                                </ol>
-                            </i></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
     <!-- Main Content-->
-    <div class="entry">
+    <div class="container px-4 px-lg-5" style="text-align: center; margin: auto;">
         <div class="page-content">
             <div class="form-v9-content">
                 <form class="form-detail" action="/predict" method="post">
                     <div class="protein-inputs">
                         <h2>Please Fill The Information</h2>
                         <div class="form-row">
-                            <!-- Add your form fields here -->
                             <label for="DYRK1A_N">DYRK1A_N:</label>
                             <input type="text" name="DYRK1A_N" id="DYRK1A_N" class="input-text" required>
                             <label for="ITSN1_N">ITSN1_N:</label>
@@ -385,22 +284,16 @@
                             <label for="Behavior">Behavior:</label>
                             <input type="text" name="Behavior" id="Behavior" class="input-text" required>
                         </div>
-                        <br>
-                        <div class="form-row-last">
-                            <button type="button" class="randomize" onclick="fillRandom()">AutoFill</button>
-                            <input type="submit" name="register" class="register" value="Predict">
-                        </div>
-                        <blockquote><b>❗For accurate predictions it is advised to fill all the input fields
-                                manually❗</b></blockquote>
+                    </div>
+                    </div>
+                    <div class="form-row-last">
+                        <button type="button" class="randomize" onclick="fillRandom()">AutoFill</button>
+                        <input type="submit" name="register" class="register" value="Predict">
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    <footer>
-
-        <div class="footer-copyright text-center py-3">Created by <a href="https://www.linkedin.com/in/yashas-h-g-141a7726b/">Yashas H G 😀</a></div>
-    </footer>
 
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
