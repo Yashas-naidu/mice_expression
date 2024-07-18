@@ -14,7 +14,7 @@ def homePage():
 @app.route('/train', methods=['GET'])  # Route to train the pipeline
 def training():
     os.system("python main.py")
-    return "Training Successful!"
+    return "Training Successful! you can redirect back to the previous page"
 
 @app.route('/predict', methods=['POST', 'GET'])  # Route to show the predictions in a web UI
 def index():
